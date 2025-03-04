@@ -1,0 +1,975 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    transition: all 0.2s linear;
+}
+
+html,body{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+}
+
+
+.main-content{
+    flex: 1;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 30px 0;
+    width: 100%;
+    bottom: 0;
+    margin-top: auto;
+}
+.footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.footer-link i {
+    margin-right: 8px;
+}
+
+.footer-link {
+    margin-bottom: 10px;
+    display: block;
+}
+/* Toggle Button */
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba(0, 0, 0, 1)" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
+
+/* Logo */
+.logo{
+    height: 50px;
+    padding-left: 30px;
+}
+
+/* Icons */
+.icons a {
+    margin-right: 15px;
+    padding: 10px;
+}
+
+/* Navbar */
+header .navbar {
+    background-color: rgb(209, 205, 205);
+}
+
+header .navbar a {
+    font-size: 18px;
+}
+
+header .navbar a:hover {
+    background-color: rgb(238, 236, 227);
+}
+
+form .input-group .input-group-text {
+    background-color: #000000;
+    border-color: transparent;
+}
+
+.custom-border {
+    color: rgb(0, 0, 0);
+}
+
+/* Slider */
+#carouselExampleCaptions {
+    margin-top:60px ;
+}
+
+#carouselExampleCaptions .carousel-inner img {
+    width: 100%;
+    height: 90vh;
+}
+
+.carousel-caption h5 {
+    font-size: 3vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.carousel-caption p {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    font-size: 1.5vw;
+    color: rgba(226, 237, 19, 0.736);
+}
+
+.carousel-caption .btn1 {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%); 
+    background-color: rgba(0, 0, 0, 0.537);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.carousel-caption .btn1:hover {
+    cursor: pointer;
+    background-color: rgb(155, 76, 76);
+}
+
+
+@media (max-width: 768px) {
+    #carouselExampleCaptions {
+        height: 400px;
+    }
+
+    #carouselExampleCaptions .carousel-inner img {
+        height: 400px;
+    }
+
+    .carousel-caption h5 {
+        font-size: 2vw;
+    }
+
+    .carousel-caption p {
+        font-size: 3vw;
+    }
+
+    .carousel-caption .btn1 {
+        font-size: 2.5vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption h5 {
+        font-size: 6vw;
+    }
+
+    .carousel-caption p {
+        font-size: 4vw;
+    }
+
+    .carousel-caption .btn1 {
+        font-size: 3.5vw;
+    }
+}
+
+
+.discount .container {
+    display: flex;
+    justify-content: center;
+}
+
+.discount {
+    background-color: rgb(232, 225, 224);
+}
+
+.discount .container img {
+    border-radius: 40px;
+    height: 60vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.discount .text {
+    padding: 80px;
+    color: rgba(0, 0, 0, 0.927);
+}
+
+.discount .text h2 {
+    font-size: 70px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.discount .text h3 {
+    font-size: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.discount .container .text .ordr {
+    background-color: rgb(228, 14, 14);
+    padding: 8px;
+    border-radius: 8px;
+    color: white;
+}
+
+.discount .container .text .ordr:hover {
+    background-color: rgb(230, 158, 26);
+    color: black;
+}
+
+@media (max-width: 991px) {
+    .discount .text {
+        padding: 40px;
+    }
+
+    .discount .text h2 {
+        font-size: 50px;
+    }
+
+    .discount .text h3 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .discount .text {
+        padding: 20px;
+    }
+
+    .discount .text h2 {
+        font-size: 40px;
+    }
+
+    .discount .text h3 {
+        font-size: 25px;
+    }
+
+    .discount .container img {
+        height: 40vh;
+    }
+}
+
+@media (max-width: 575px) {
+    .discount .text h2 {
+        font-size: 35px;
+    }
+
+    .discount .text h3 {
+        font-size: 20px;
+    }
+
+    .discount .container img {
+        height: 30vh;
+    }
+}
+
+/* Top Restaurants Section */
+.topres {
+    background-color: #ff8b0ed3;
+    padding: 80px 0;
+  }
+  
+  .section-title {
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    color: rgb(0, 0, 0);
+  }
+  
+  .topres .row .card {
+    border: none;
+    border-radius: 35px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f9f9f8;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-img-top {
+    border-radius: 15px;
+  }
+  
+  .rtitle {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #000000;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 30px;
+    }
+  
+    .rtitle {
+      font-size: 1rem;
+    }
+  
+    .card {
+      border-radius: 12px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .section-title {
+      font-size: 24px;
+    }
+  
+    .rtitle {
+      font-size: 0.9rem;
+    }
+  
+    .card img {
+      border-radius: 12px;
+    }
+  }
+  
+
+/* MENU STYLING */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container .row .card {
+    background-color: #ffffff;
+    width: 100%; 
+    height: auto; 
+    border-style: none;
+    margin: auto; 
+}
+
+.container .row .card img {
+    width: 100%; 
+    height: 30vh; 
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.container .row .card .card-body {
+    text-align: center;
+    padding: 10px; 
+}
+
+.container .row .card .btn {
+    background-color: #e0e9de;
+    color: rgb(249, 8, 0);
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    border-style: none;
+    font-weight: bold;
+    padding: 10px 20px; 
+}
+
+.row .card .btn:hover {
+    background-color: rgb(211, 203, 184);
+}
+
+.card .label {
+    display: inline-block;
+    background-color: rgb(235, 235, 230);
+    border-radius: 100px;
+    padding: 5px 8px;
+    width: 40px; 
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    z-index: 1; 
+}
+
+.card .label:hover {
+    background-color: #e3f91f;
+}
+
+.card .label .fa-heart {
+    font-size: 25px; 
+    color: #ff0000;
+}
+.card .ptitle{
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+@media (max-width: 768px) {
+    .card .label {
+        padding: 4px 6px; 
+        width: 35px; 
+        top: 5px; 
+        right: 5px; 
+    }
+
+    .card .label .fa-heart {
+        font-size: 20px; 
+    }
+}
+
+@media (max-width: 576px) {
+    .card .label {
+        padding: 3px 5px; 
+        width: 30px;
+        top: 5px; 
+        right: 5px; 
+    }
+
+    .card .label .fa-heart {
+        font-size: 18px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .container .row .card {
+        width: 100%; 
+        height: auto; 
+    }
+    
+    .container .row .card img {
+        width: 100%;
+        height: 45vh;
+    }
+}
+
+/* Restaurants Page */
+.res-container {
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 15px; 
+    margin-top: 50px;
+}
+
+.res-container .row {
+    justify-content: center;
+}
+
+.res-container .card {
+    width: 100%;
+    max-width: 100%; 
+    margin: 60 auto;
+}
+
+.res-container .card .card-title {
+    font-weight: bold;
+    font-size: 24px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.res-container .card .card-text {
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+
+@media (max-width: 768px) {
+    .res-container .card {
+        max-width: 100%; 
+    }
+}
+
+@media (max-width: 576px) {
+    .res-container .card {
+        max-width: 100%; 
+    }
+
+    .res-container .card .card-title {
+        font-size: 18px;
+    }
+
+    .res-container .card .card-text {
+        font-size: 16px;
+    }
+}
+
+/* Food Items */
+#fast-food-items .item-card {
+    display: inline-block; 
+    width: 100%; 
+    height: auto;
+    padding: 10px; 
+    background-color: #fcfcfc; 
+    transition: transform 0.3s ease; 
+}
+
+.item-card img {
+    width: 80%; 
+    height: auto;
+    border-radius: 10px; 
+}
+
+.item-card:hover {
+    transform: scale(1.05); 
+}
+
+@media (max-width: 768px) { 
+    #fast-food-items .col-md-4 {
+        flex: 0 0 33.33%; 
+        max-width: 33.33%;
+    }
+}
+
+@media (max-width: 576px) { 
+    #fast-food-items .col-6 {
+        flex: 0 0 50%; 
+        max-width: 50%;
+    }
+    
+    #fast-food-items .item-card img {
+        width: 90%; 
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+
+
+.text-end p {
+    margin: 0;
+}
+
+.bi {
+    font-size: 1.2rem;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 300px; 
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(30%); 
+}
+
+.overlay {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.overlay.o2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+}
+
+.overlay h2{
+    color:wheat;
+    font-size: 3em;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#contact-us{
+    background-color: rgb(191, 199, 205);
+}
+ 
+.tab-content img{
+    width: 300px;
+    height: 250px;
+}
+
+.rating{
+    color:rgb(240, 93, 2);
+}
+
+.favBox {
+    display: none;
+    position: absolute;
+    top: 75px;
+    width: 400px;
+    min-height: 50px;
+    max-height: 700px;
+    overflow-y: auto;
+    background-color: rgba(253, 253, 253, 0.718);
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+
+.favBox img {
+    width: 50px; 
+    height: auto;
+}
+
+.favBox .title {
+    font-size: 12px; 
+    font-weight: bold;
+    margin-left: -15px;
+}
+
+.favBox .price {
+    font-size: 13px; 
+    color: #ef0c0c; 
+    font-weight: bold;
+  
+}
+
+.favBox .favremovebtn{
+    padding: 1px 3px;
+    color:red;
+    background-color: rgb(255, 242, 98);
+    border: transparent;
+    font-size: 15px;
+}
+
+.favBox .favremovebtn:hover{
+    background-color: rgb(221, 221, 221);
+}
+
+.favBox table {
+    width: 100%; 
+    border-spacing: 15px;
+    
+}
+
+.favBox td {
+    padding: 5px; 
+    border-bottom: 1px solid rgb(11, 10, 10);
+}
+
+.cartBox {
+    display: none;
+    position: absolute;
+    top: 75px;
+    right: 10px;
+    width: 450px;
+    min-height: 50px;
+    max-height: 600px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.833);
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+.cartBox img {
+    width: 50px; 
+    height: auto;
+}
+
+.cartBox .title {
+    font-size: 12px; 
+    font-weight: bold;
+    margin-left: -15px;
+}
+
+.cartBox .price {
+    font-size: 13px; 
+    color: #ef0c0c; 
+  
+}
+
+.cartBox  .buybtn{
+    padding: 1px 3px;
+    color:red;
+    background-color: rgb(202, 189, 49);
+    border: transparent;
+    font-size: 15px;
+}
+
+.cartBox .buybtn:hover{
+    background-color: wheat;
+}
+
+.cartBox table {
+    width: 100%; 
+    border-spacing: 5px;
+    
+}
+
+.cartBox td {
+    padding: 10px; 
+    border-bottom: 1px solid rgb(11, 10, 10);
+}
+
+
+.cartBox .cartremovebtn{
+    padding: 1px 3px;
+    color:red;
+    background-color: rgb(255, 242, 98);
+    border: transparent;
+    font-size: 15px;
+}
+.cartBox .checkoutbtn{
+    background-color: #004cff;
+    color: white;
+    padding: 3px 5px;
+    text-align: center;
+    margin: 0.5em 11em;
+    border-radius: 20px;
+}
+.cartBox .checkoutbtn:hover{
+    background-color: #dddddda7;
+    color: black;
+}
+.cartBox .cartremovebtn:hover{
+    background-color: rgb(221, 221, 221);
+}
+
+
+.message {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(0, 0, 0);
+    background-color: rgb(234, 223, 9); 
+    padding: 10px; 
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    z-index: 1000;
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+@keyframes slideIn {
+    from {
+        top: 0px;
+        opacity: 0;
+    }
+    to {
+        top: 100px; 
+        opacity: 1;
+    }
+}
+
+.quantity button{
+    color: black;
+    background-color: #ffc107;
+    width: 20px;
+}
+
+.favBox p {
+    font-size: 15px;  
+    font-family: Verdana, Geneva, Tahoma, sans-serif;       
+    color: #ff5500;          
+    font-weight: bold;       
+    text-align: center;     
+    margin-top: 15px;              
+}
+
+.cartBox p {
+    font-size: 15px;  
+    font-family: Verdana, Geneva, Tahoma, sans-serif;       
+    color: #ff5500;          
+    font-weight: bold;       
+    text-align: center;     
+    margin-top: 15px;              
+}
+
+
+/* General table styling */
+.class-timetable table {
+    border-spacing: 0 15px;
+    background-color: #f8f9fa;
+}
+
+.class-timetable thead th {
+    background-color: #343a40;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+}
+
+.class-timetable tbody tr {
+    text-align: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #3f3c3c;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.class-timetable tbody tr:hover {
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Product Image styling */
+.proImgs {
+    margin: 10px 10px;
+    width: 100px;
+    height: 70px;
+    border-radius: 8px;
+    
+}
+
+/* Product Details */
+.ts-meta h5 {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #212529;
+}
+
+.ts-meta span {
+    display: block;
+    color: #6c757d;
+}
+
+/* Total Price styling */
+.ts-meta .text-white {
+    font-size: 1.5em;
+    color: #343a40;
+}
+
+/* Button Styling */
+.class-timetable .btn{
+    background-color: #cfad26; 
+    font-weight: bold;
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 45px;
+    transition: background-color 0.3s ease;
+    margin-left: 42%;
+}
+.class-timetable .btn a{
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+}
+.class-timetable .btn:hover {
+    background-color: #ddca61;
+}
+
+.text-danger {
+    color: #dc3545;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.text-danger:hover {
+    color: #c82333;
+    text-decoration: underline;
+}
+
+.addressPOP select,
+.addressPOP textarea {
+    font-size: 14px;
+    color: #c4c4c4;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #363636;
+    padding-left: 20px;
+    padding-right: 5px;
+    background: transparent;
+    margin-bottom: 20px;
+}
+
+
+.addressPOP .select2 option {
+    color: #000;
+    padding: 20px !important;
+}
+
+.addressPOP input,
+.addressPOP textarea {
+    color: black !important;
+}
+
+.addressPOP input::placeholder {
+    color: #000 !important;
+}
+
+.fixed-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050; /* Ensure it appears above other elements */
+    max-width: 90%;
+    opacity: 0.9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease, fadeOut 0.5s ease 4.5s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.9;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 0.9;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/*------------------------
+  Bmi Calculator Section
+-------------------------*/
+
+.bmi-calculator-section {
+    background: #f3f1f1;
+}
+
+.section-title.chart-title {
+    text-align: left;
+}
+
+.chart-table table {
+    border: 1px solid #363636;
+    width: 100%;
+}
+
+.chart-table table thead {
+    border-bottom: 1px solid #363636;
+}
+
+.chart-table table thead tr th {
+    background: #060606;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-right: 1px solid #363636;
+    padding: 14px 0 11px 50px;
+}
+
+.chart-table table tbody tr:nth-child(even) {
+    background: #111111;
+}
+
+.chart-table table tbody tr td {
+    font-size: 14px;
+    color: #c4c4c4;
+    border-right: 1px solid #363636;
+    padding: 17px 0 17px 50px;
+}
+
+.chart-table table tbody tr td.point {
+    width: 200px;
+}
+
+.section-title.chart-calculate-title {
+    text-align: left;
+}
+
+.chart-calculate-form p {
+    color: #c4c4c4;
+    margin-bottom: 24px;
+}
+
+.chart-calculate-form form input {
+    font-size: 14px;
+    color: #c4c4c4;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #363636;
+    padding-left: 20px;
+    padding-right: 5px;
+    background: transparent;
+    margin-bottom: 20px;
+}
