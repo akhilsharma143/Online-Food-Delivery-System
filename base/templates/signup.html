@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %} 
+<style>
+    body{
+        background: #fcfafa;
+    }
+    
+    .custom-bg {
+    margin-left: 50px;
+    padding: 20px;
+    border-radius: 8px;  
+}
+
+.row1 {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .row1 {
+        flex-direction: column;  
+    }
+
+    .custom-bg {
+        margin-left: 0; 
+    }
+}
+
+</style>
+ 
+
+    <div id="register">
+        <div class="image-container position-relative">
+            <img src="{% static "Assets/media/about.jpg" %}" alt="Background Image" class="img-fluid" style="height: 300px; margin-top: 30px;">
+            <div class="overlay o2 d-flex justify-content-center align-items-center">
+                <h2 class="text-center mt-2">Register</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="login-register-container py-5">
+        <div class="row w-100 justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 login-section custom-bg">
+                <form action="?" method="POST">
+                    {% csrf_token %}
+                    <div class="row1 gap-4 justify-content-between">   
+                        <div class="mb-4 col-12 col-sm-6">
+                            <input type="text" class="form-control" id="Username" name="Username" placeholder="Username" required>
+                        </div>
+                        <div class="mb-4 col-12 col-sm-6">
+                            <input type="text" class="form-control" id="First Name" name="FirstName" placeholder="First Name" required>
+                        </div>
+                    </div> 
+
+                    <div class="row1 gap-4 justify-content-between"> 
+                        <div class="mb-4 col-12 col-sm-6">
+                            <input type="text" class="form-control" id="Last Name" name="LastName" placeholder="Last Name" required>
+                        </div>  
+                        <div class="mb-4 col-12 col-sm-6">
+                            <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" required>
+                        </div>
+                    </div>
+
+                    <div class="row1 gap-4 justify-content-between">
+                        <div class="mb-4 col-12 col-sm-6">
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your 10 digit Phone no." required>
+                        </div>
+                        <div class="mb-4 col-12 col-sm-6">               
+                            <input type="date" class="form-control" id="registerDob" name="dob" required>
+                        </div>
+                    </div>
+    
+                    <div class="row1 gap-4 justify-content-between">
+                        <div class="mb-4 col-12 col-sm-6">
+                            <select class="form-control" id="registerGender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-4 col-12 col-sm-6">
+                            <input type="password" class="form-control" id="registerPassword" name="password" placeholder="Create Your Password" required>
+                        </div>
+                    </div>
+    
+                    <div class="row1 gap-4 justify-content-between">
+                        <div class="mb-4 col-12 col-sm-6">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                I have read & agree to your Privacy Policy and Terms and Conditions
+                            </label>
+                        </div>
+                        <div class="mb-4 col-12 col-sm-6">
+                            <button type="submit" class="btn btn-warning w-100">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}" id="showLogin" style="text-decoration: none;">Login here</a></p>
+            </div>
+        </div>
+    </div>
+ 
+    {% endblock content %}
+

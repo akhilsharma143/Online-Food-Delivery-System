@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="bmi-calculator-section spad py-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Personal Information Section -->
+                <div class="section-title chart-calculate-title">
+                    <span>Personal Information</span>
+                    <h2>Address and Contact Information</h2>
+                </div>
+                <div class="chart-calculate-form">
+                    <div class="row">
+                        {% if userData %}
+                            {% for userd in userData %}
+                                <div class="col-xl-4 card p-4 m-4">
+                                    <b>{{ userd.Name | upper }}</b>
+                                    {{ userd.phone }} <br>
+                                    {{ userd.address }} {{ userd.city }} {{ userd.state }}, {{ userd.pincode }}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-xl-12">
+                                <p class="text-center text-warning">No address information available. Please add an address.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-xl-4 my-4 col-12">
+                        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#addressModal">Add Address</button>
+                    </div>
+
+                          <!-- Modal -->
+        <div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="addressModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addressModalLabel">Add Address</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" class='addressPOP' action="{% url 'addAddress' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <select name="gender" class="form-control">
+                                    <option value="Gender">Your Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="City" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="State" name="state" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="Pincode" name="pincode" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Address" name="Address" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- Order History Section -->
+                <div class="section-title chart-title mt-5">
+                    <span>Order History</span>
+                    <h2>Orders</h2>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover table-bordered bg-dark">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Address Name</th>
+                                <th>Items</th>
+                                <th>Order Price</th>
+                                <th>Address</th>
+                                <th>Address Phone</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if Orders %}
+                            {% for order in Orders %}
+                            <tr>
+                                <td>#{{ order.orderId }}</td>
+                                <td>{{ order.address.Name }}</td>
+                                <td>
+                                    {% for item in order.items.all %}
+                                        {{ item.name }}<br>
+                                    {% endfor %}
+                                </td>
+                                <td>${{ order.totalPrice }}</td>
+                                <td>{{ order.address.address }}, {{ order.address.city }}, {{ order.address.state }}, {{ order.address.pincode }}</td>
+                                <td>{{ order.address.phone }}</td>
+                                <td>
+                                    <div style='padding:5px 10px; border-radius:20vh; background:
+                                    {% if order.status == "Order placed" %}orange
+                                    {% elif order.status == "Delivered" %}green
+                                    {% elif order.status == "Order cancelled" %}red
+                                    {% elif order.status == "Shipped" %}grey
+                                    {% elif order.status == "Out for delivery" %}blue
+                                    {% else %}grey
+                                    {% endif %}; color:white; text-align:center;'>
+                                    {{ order.status }}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            
+                            {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center text-warning">No orders found.</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

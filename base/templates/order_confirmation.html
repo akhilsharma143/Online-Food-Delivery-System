@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    /* Styles for order confirmation */
+    .order-confirmation {
+        padding: 50px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 50px auto;
+        max-width: 800px;
+    }
+    .order-confirmation h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #28a745;
+    }
+    .order-details {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .order-details .detail {
+        margin-bottom: 10px;
+    }
+    .order-items table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .order-items th, .order-items td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+    .order-items th {
+        background-color: #28a745;
+        color: white;
+    }
+</style>
+
+<div class="order-confirmation">
+    <h2>Order Confirmation</h2>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <div class="order-details">
+            <div class="detail"><strong>Order ID:</strong> {{ order.orderId }}</div>
+            <div class="detail"><strong>Status:</strong> {{ order.status }}</div>
+            <div class="detail"><strong>Total Price:</strong> ₹{{ order.totalPrice }}</div>
+            <div class="detail"><strong>Shipping Address:</strong> {{ order.address.address }}, {{ order.address.city }}, {{ order.address.state }} - {{ order.address.pincode }}</div>
+        </div>
+
+        <div class="order-items">
+            <h4>Items Ordered</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items.all %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>₹{{ item.price }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

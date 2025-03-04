@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Menu
+{% endblock title %}
+
+{% block content %} 
+    <style>
+        .nav-tabs {
+            justify-content: center;
+            margin-bottom: 20px;
+            margin-top: 80px;
+        }
+        .listItems{
+            margin-top: 80px;
+        }
+        .nav-tabs .nav-link {
+            color: #495057;
+            border: 1px solid transparent;
+            border-radius: .25rem;
+            background-color: #f8f9fa;
+            margin-right: 5px;
+        }
+        .nav-tabs .nav-link.active {
+            background-color:rgb(237, 136, 20);
+            color: white;
+            border-color:rgb(0, 0, 0);
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+
+    </style>
+   
+    
+    <!-- Tab Navigation -->
+     <div class="listItems"><div class="text-center"><h1>OUR MENU ITEMS</h1></div>
+    <ul class="nav nav-tabs m-md-3 "  id="myTab" role="tablist">
+
+        {% for category in main_categories %}
+    <li class="nav-item" role="presentation">
+        <a class="nav-link {% if forloop.first %}active{% endif %}" id="{{ category.name|lower }}-tab" data-bs-toggle="tab" href="#{{ category.name|lower }}" role="tab" aria-controls="{{ category.name|lower }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ category.name }}</a>
+    </li>
+    {% endfor %}
+    </ul>
+</div>
+
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="myTabContent">
+        {% for category in main_categories %}
+        <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="{{ category.name|lower }}" role="tabpanel" aria-labelledby="{{ category.name|lower }}-tab">
+            <div class="container">
+                <div class="row">
+                    {% for subcategory in category.subcategories.all %}
+                    {% for item in subcategory.food_items.all %}
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="card" data-id="{{ item.id }}">
+                            <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                            <div class="label">
+                                <a href="{% url 'add_like' pid=item.id %}" class="fav">
+                                    <i class="fa-solid fa-heart"></i>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title ptitle">{{ item.name }}</h5>
+                                <p class="card-text mb-1 price">₹{{ item.price }}</p>
+                                <div class="rating mb-2">
+                                    {% for star in "★★★★★" %}
+                                    <i class="fa fa-star{% if forloop.counter > item.rating %}-o{% endif %}"></i>
+                                    {% endfor %}
+                                </div>
+                               <a href="{% url 'add item' pid=item.id %}" class="btn btn-primary cart">Add To Cart</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+       
+{% endblock content %}
+

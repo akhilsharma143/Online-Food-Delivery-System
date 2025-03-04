@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Restaurants
+{% endblock title %}
+
+{% block content %} 
+   
+    <div id="fast-food-items1" class="py-1">
+        <div class="res-container">
+            <h2 class="text-center mb-2 py-5"><b>RESTAURANTS</b></h2>
+            <div class="row">
+                {% for restaurant in restaurants %}
+                <!-- Restaurant -->
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <a href="{% url "menu" %}"><img src="{{restaurant.image.url }}" class="card-img-top" alt="{{restaurant.name}}">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{restaurant.name}}</h5>
+                            <p class="card-text">{{ restaurant.description }}</p>
+                            <p class="card-text"><strong>Location:</strong> {{ restaurant.location }}</p>
+                            <p class="card-text"><strong>Rating:</strong> {{ restaurant.rating }}/5</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+        
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+

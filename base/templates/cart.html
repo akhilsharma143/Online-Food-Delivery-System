@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+    .container {
+        margin-bottom: 120px;
+    }
+</style>
+
+<section class='container py-5 mt-5'>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="class-timetable w-100">
+                <table class='w-100'>
+                    <thead>
+                        <tr>
+                            <th colspan="2">Product Image</th>
+                            <th colspan="2">Product Name</th>
+                            <th>Price</th>
+                            <th>Remove Item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cartitem in cartItems %}
+                            <td colspan="2">
+                                <img class="proImgs" src="{{ cartitem.product.image.url }}" alt="">
+                            </td>
+                            <td colspan="2">
+                                <h5>{{ cartitem.product.name }}</h5>
+                                <span>{{ cartitem.product.subcategory.main_category.name }}</span>
+                            </td>
+                            <td>
+                                <h5>₹{{ cartitem.product.price }}</h5>
+                            </td>
+                            <td>
+                                <a href='{% url "remove item" pid=cartitem.id %}' class="text-danger"><i class="fa fa-trash"></i>Remove</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                       
+                    </tbody>
+                </table>
+                <tr>
+                    <td colspan="4" class='ts-meta'>
+                        <div class='text-dark text-center' style='font-weight:bold;font-size:1.8em'>Total Price:</div>
+                    </td>
+                    <td colspan="2" class='ts-meta'>
+                        <div class='text-dark text-center' style='font-weight:bold;font-size:2em'>₹{{ totalPrice }}</div>
+                    </td>
+                </tr>
+                <div class='btn'><a href='{% url "checkout" %}'>Proceed To Checkout</a></div>
+                  
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

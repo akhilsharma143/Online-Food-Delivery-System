@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+    /* Base Styles */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Breadcrumb Section */
+.breadcrumb-section {
+    padding: 50px 0;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Checkout Section */
+.checkout-section {
+    padding: 60px 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+/* Section Titles */
+.section-title span {
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.section-title h2 {
+    margin-top: 5px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Table Styles */
+.chart-table {
+    background: #f3f4f6;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.chart-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.chart-table th, .chart-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Modal */
+.modal-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-body .form-control {
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.btn-primary, .btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-light {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .checkout-section {
+        padding: 30px;
+    }
+
+    .chart-table {
+        padding: 15px;
+    }
+
+    .modal-dialog {
+        width: 95%;
+    }
+}
+
+</style>
+<div id="login">
+    <div class="image-container position-relative mt-3">
+        <img src="{% static "Assets/media/about.jpg" %}" alt="Background Image" style="height: 300px; margin-top: 30px;" class="img-fluid">
+        <div class="overlay o2 d-flex justify-content-center align-items-center">
+            <h2 class="text-center mt-4" >Checkout</h2>
+        </div>
+    </div>
+</div>
+
+    <!-- Checkout Section Begin -->
+    <section class="checkout-section spad">
+        <div class="container">
+            <div class="row">
+                <!-- Cart Items Section -->
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <span>Items Added in Cart</span>
+                        <h2>Items</h2>
+                    </div>
+                    <div class="chart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product Image</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for  cartitem in cartItems %}
+                                    <tr>
+                                        <td>
+                                            <img src="{{cartitem.product.image.url}}" alt="{{ item.product.name }}" style="width: 50px; height: 50px;">
+                                        </td>
+                                        <td style="color:black;">{{ cartitem.product.name }}</td>
+                                        <td style="color:black;">₹{{ cartitem.product.price }}</td>
+                                    </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="2" style="font-weight: bold;">Total:</td>
+                                    <td style="font-weight: bold;">₹{{ totalPrice }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    
+
+               <!-- Address and Contact Information Section -->
+<div class="col-lg-6">
+    <div class="section-title">
+        <span>Personal Information</span>
+        <h2>Address and Contact Information</h2>
+    </div>
+    <div class="chart-calculate-form">
+        <!-- Modal Trigger -->
+        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#addressModal">Add Address</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="addressModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addressModalLabel">Add Address</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" class='addressPOP' action="{% url 'addAddress' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <select name="gender" class="form-control">
+                                    <option value="Gender">Your Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="City" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="State" name="state" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="Pincode" name="pincode" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Address" name="Address" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Address Selection Form -->
+        <form action='?' method="POST">
+            {% csrf_token %}
+            <div class="form-group mt-4">
+                <select class="form-control" name="address">
+                    <option>---- SELECT ADDRESS ----</option>
+                    {% for userd in userData %}
+                        <option value="{{ userd.id }}">
+                            {{ userd.Name }} - {{ userd.phone }} || {{ userd.address }} {{ userd.city }} {{ userd.state }}, {{ userd.pincode }}
+                        </option>
+                    {% empty %}
+                        <option value="">No address found</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-success">Place Order</button>
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+    </section>
+    <!-- Checkout Section End -->
+
+      <!-- Modal for Order Confirmation -->
+      <div class="modal fade" id="orderConfirmationModal" tabindex="-1" aria-labelledby="orderConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderConfirmationModalLabel">Order Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your order has been placed successfully!</p>
+                    <p><strong>Order ID:</strong> <span id="order-id"></span></p>
+                    <p><strong>Total Price:</strong> ₹<span id="order-total-price"></span></p>
+                    <p><strong>Status:</strong> <span id="order-status"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page refresh
+            
+            const formData = new FormData(this);
+
+            fetch("{% url 'checkout' %}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'X-CSRFToken': "{{ csrf_token }}"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.orderId) {
+                    document.getElementById('order-id').innerText = data.orderId;
+                    document.getElementById('order-total-price').innerText = data.totalPrice;
+                    document.getElementById('order-status').innerText = data.status;
+                    $('#orderConfirmationModal').modal('show'); // Show modal
+                }
+            });
+        });
+    </script>
+
+{% endblock content %}

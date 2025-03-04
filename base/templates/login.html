@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Login
+{% endblock title %}
+
+{% block content %} 
+<style>
+     body{
+        background: #fcfafa;
+    }
+    .custom-bg {
+   padding-left: 30px;
+   margin-left: 30%;
+   border-radius: 8px; 
+    }
+
+    @media (max-width: 768px) {
+    .row1 {
+        flex-direction: column;  
+    }
+
+    .custom-bg {
+        margin-left: 0; 
+    }
+}
+
+
+</style>
+
+    <div id="login">
+        <div class="image-container position-relative">
+            <img src="{% static "Assets/media/about.jpg" %}" alt="Background Image" style="height: 300px; margin-top: 30px;" class="img-fluid">
+            <div class="overlay o2 d-flex justify-content-center align-items-center">
+                <h2 class="text-center mt-4" >Login</h2>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="login-register-container py-5">
+        <div class="row w-100 justify-content-center">
+            <div class="col-md-6 login-section  custom-bg">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-4  col-xl-5">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+            
+                    <div class="mb-4  col-xl-5">
+                        <input type="password" class="form-control" id="Password" name="password" placeholder="Enter Your Password" required>
+                    </div>
+    
+
+                <div class="mb-4  col-xl-5">
+                    <button type="submit" class="btn btn-warning w-100">Login</button>
+                </div>
+                </form>   
+                <p class="mt-3">Don't have an account? <a href="{% url 'signup' %}" id="showRegister" style="text-decoration: none;">Register here</a></p>
+            </div>
+            </div>
+        </div>
+          
+       
+     {% endblock content %}
+
